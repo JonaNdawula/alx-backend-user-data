@@ -1,9 +1,8 @@
 #!/usr/bin/env/ python3
 """
-module constains password encrypting
+This module contains password encrypting
 functions
 """
-
 import bcrypt
 
 
