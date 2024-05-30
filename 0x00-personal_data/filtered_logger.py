@@ -13,5 +13,7 @@ def filter_datum(fields, redaction, message, separator):
     Returns the log message with certain fields
     obfuscated
     """
-    pattern = '|'.join(map(re.escape, fields))
-    return re.sub(pattern, redaction, message)
+    for field in fields:
+        message = re.sub(f"{field}=[^{separator}]*",
+                         f"{field}={redaction}", message)
+    return message
