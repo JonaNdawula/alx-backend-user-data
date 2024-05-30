@@ -6,7 +6,7 @@ functions
 import bcrypt
 
 
-def hash_password(password):
+def hash_password(password: str) -> bytes:
     """
     This function enrypts a password
     """
