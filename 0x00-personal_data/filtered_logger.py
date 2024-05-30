@@ -8,7 +8,7 @@ import re
 import logging
 from typing import List
 import os
-import mysl.connector
+import mysql.connector
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
@@ -64,7 +64,7 @@ def get_logger() -> logging.Logger:
     return logger
 
 
-def get_db() -> mysql.connector.connection.MYSQLConnection:
+def get_db() -> mysql.connector.connection.MySQLConnection:
     """
     This function returns a connector to
     the data base
