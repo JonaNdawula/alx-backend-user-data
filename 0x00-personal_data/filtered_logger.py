@@ -8,7 +8,9 @@ obfuscated
 import re
 
 
-def filter_datum(fields: list, redaction: str, message: str, separator: str) -> str:
+def filter_datum(
+    fields: list, redaction: str, message: str, separator: str
+) -> str:
     """
     Returns the log message with certain fields
     obfuscated
