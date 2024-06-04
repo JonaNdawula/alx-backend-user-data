@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# check code 
+echo "Enter file:"
+read file
+
+pycodestyle --first $file
