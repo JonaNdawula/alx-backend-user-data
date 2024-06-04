@@ -22,6 +22,9 @@ if getenv("AUTH_TYPE") == "auth":
 
 @app.before_request
 def before_request_func():
+    """
+    This function authenticates the paths
+    """
     if auth is None:
         return
 
