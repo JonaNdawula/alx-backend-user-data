@@ -16,7 +16,16 @@ class Auth:
         """
         function for authentication
         """
-        return False
+        if path is None:
+            return True
+
+        if not excluded_paths:
+            return True
+
+        if path[-1] != '/':
+            path += '/'
+
+        return path not in excluded_paths
 
     def authorization_header(self, request=None) -> str:
         """
