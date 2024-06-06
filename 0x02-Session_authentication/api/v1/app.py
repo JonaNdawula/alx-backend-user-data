@@ -32,7 +32,7 @@ def before_request_func():
     """
     This function authenticates the paths
     """
-    if auth is None:
+    if auth is None or request.method == 'GET':
         return
 
     excluded_paths = [
