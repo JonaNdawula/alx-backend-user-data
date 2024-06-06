@@ -6,6 +6,7 @@ from flask import Blueprint, request, jsonify, make_response
 from models.user import User
 from api.v1.app import auth
 from os import getenv
+from api.v1.app import app
 
 
 SESSION_NAME = getenv("SESSION_NAME")
@@ -18,6 +19,9 @@ session_auth = Blueprint(
 
 @session_auth.route('/login', methods=['POST'], strict_slashes=False)
 def login() -> str:
+    """
+    Method to log in
+    """
     email = request.form.get('email')
     if not email:
         return jsonify({"error": "email missing"}), 400
@@ -36,3 +40,12 @@ def login() -> str:
             response = jsonify(user.to_json())
             response.set_cookie(getenv("SESSION_NAME"), session_id)
             return response
+
+@session_auth.route('/logut', methods=['DELETE'], strict_slashes=False)
+def logout():
+    """
+    Method to delete
+    """
+    if not auth.detroy_session(request):
+        abort(404)
+    return jsonify({}), 200
