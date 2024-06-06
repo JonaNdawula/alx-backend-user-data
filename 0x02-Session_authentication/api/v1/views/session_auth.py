@@ -4,7 +4,6 @@ This module authenticates sessions
 """
 from flask import Blueprint, request, jsonify, make_response
 from models.user import User
-from api.v1.app import auth
 from os import getenv
 from api.v1.app import app
 
@@ -36,6 +35,7 @@ def login() -> str:
 
     for user in users:
         if user.is_valid_password(password):
+            from api.v1.app import auth
             session_id = auth.create_session(user.id)
             response = jsonify(user.to_json())
             response.set_cookie(SESSION_NAME, session_id)
