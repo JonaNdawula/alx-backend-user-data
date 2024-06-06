@@ -6,6 +6,7 @@ for session authenntication
 from api.v1.auth.auth import Auth
 import uuid
 
+
 class SessionAuth(Auth):
     """
     This class inherits from Auth
