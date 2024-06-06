@@ -28,7 +28,7 @@ def login() -> str:
 
     password = request.form.get('password')
     if not password:
-        return jsonify({"password missing"}), 400
+        return jsonify({"error": "password missing"}), 400
 
     users = User.search({'email': email})
     if not users:
