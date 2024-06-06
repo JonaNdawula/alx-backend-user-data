@@ -32,14 +32,16 @@ def login() -> str:
 
     users = User.search({'email': email})
     if not users:
-        return jsonify({"error": "no user found for this email"})i, 404
+        return jsonify({"error": "no user found for this email"}), 404
 
     for user in users:
         if user.is_valid_password(password):
             session_id = auth.create_session(user.id)
             response = jsonify(user.to_json())
-            response.set_cookie(getenv("SESSION_NAME"), session_id)
+            response.set_cookie(SESSION_NAME, session_id)
             return response
+
+    return jsonify({"error": "wrong password"}), 401
 
 
 @session_auth.route('/logout', methods=['DELETE'], strict_slashes=False)
