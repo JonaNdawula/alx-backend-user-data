@@ -40,6 +40,7 @@ def before_request_func():
                      '/api/v1/unauthorized/',
                      '/api/v1/forbidden/'
                     ]
+
     if not auth.require_auth(request.path, excluded_paths):
         return
 
