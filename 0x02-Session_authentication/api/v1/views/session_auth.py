@@ -17,7 +17,7 @@ session_auth = Blueprint(
 )
 
 
-@session_auth.route('/login/', methods=['POST'], strict_slashes=False)
+@session_auth.route('/login', methods=['POST'], strict_slashes=False)
 def login() -> str:
     """
     Method to log in
@@ -41,7 +41,8 @@ def login() -> str:
             response.set_cookie(getenv("SESSION_NAME"), session_id)
             return response
 
-@session_auth.route('/logut', methods=['DELETE'], strict_slashes=False)
+
+@session_auth.route('/logout', methods=['DELETE'], strict_slashes=False)
 def logout():
     """
     Method to delete
