@@ -32,7 +32,7 @@ def login() -> str:
 
     users = User.search({'email': email})
     if not users:
-        return jsonify({"error", "no user found for this email"})
+        return jsonify({"error": "no user found for this email"})i, 404
 
     for user in users:
         if user.is_valid_password(password):
