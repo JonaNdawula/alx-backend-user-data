@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-MOdule contains functions that
+Module contains functions that
 add an expiration date to a Session ID.
 """
-from api.v1.auth.session_suth import SessionAuth
+from api.v1.auth.session_auth import SessionAuth
 from datetime import datetime, timedelta
 from os import getenv
 
@@ -39,7 +39,7 @@ class SessionExpAuth(SessionAuth):
             if self.session_duration <= 0:
                 return session_dict['user_id']
             if 'created_at' in session_dict:
-                if datetime.now() < session_dict['creared_at']
-                + timedelta(seconds=self.session_duration):
+                if datetime.now() < session_dict['creared_at'] + timedelta(
+                                  seconds=self.session_duration):
                     return session_dict['user_id']
                 None
