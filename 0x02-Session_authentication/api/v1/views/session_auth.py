@@ -17,7 +17,7 @@ session_auth = Blueprint(
 )
 
 
-@session_auth.route('/login', methods=['POST'], strict_slashes=False)
+@session_auth.route('/login/', methods=['POST'], strict_slashes=False)
 def login() -> str:
     """
     Method to log in
