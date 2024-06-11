@@ -8,7 +8,7 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET'], strict_slashes=False)## decorator
+@app.route('/', methods=['GET'], strict_slashes=False)  #  decorator
 def home():
     """
     returns the / page
