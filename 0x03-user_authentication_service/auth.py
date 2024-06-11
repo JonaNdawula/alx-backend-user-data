@@ -10,13 +10,13 @@ import bcrypt
 
 
 def _hash_password(password: str) -> bytes:
-        """
-        encrypts a password
-        """
-        salt = bcrypt.gensalt(rounds=12, prefix=b'2b')
-        hashed_pass = bcrypt.hashpw(password.encode(), salt)
+    """
+    encrypts a password
+    """
+    salt = bcrypt.gensalt(rounds=12, prefix=b'2b')
+    hashed_pass = bcrypt.hashpw(password.encode(), salt)
 
-        return hashed_pass
+    return hashed_pass
 
 
 class Auth:
