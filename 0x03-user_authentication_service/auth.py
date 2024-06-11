@@ -20,7 +20,8 @@ class Auth:
         """
         encrypts a password
         """
-        hashed_pass = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+        salt = bcrypt.gensalt(rounds=12, prefix=b'2b')
+        hashed_pass = bcrypt.hashpw(password.encode(), salt)
 
         return hashed_pass
 
