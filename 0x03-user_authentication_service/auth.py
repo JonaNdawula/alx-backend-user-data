@@ -9,14 +9,7 @@ from sqlalchemy.orm.exc import NoResultFound
 import bcrypt
 
 
-class Auth:
-    """Auth class which interacts with database
-    for authentication
-    """
-    def __init__(self):
-        self._db = DB()
-
-    def _hash_password(self, password: str) -> bytes:
+def _hash_password(password: str) -> bytes:
         """
         encrypts a password
         """
@@ -24,6 +17,14 @@ class Auth:
         hashed_pass = bcrypt.hashpw(password.encode(), salt)
 
         return hashed_pass
+
+
+class Auth:
+    """Auth class which interacts with database
+    for authentication
+    """
+    def __init__(self):
+        self._db = DB()
 
     def register_user(self, email: str, password: str) -> User:
         """
