@@ -71,7 +71,7 @@ class Auth:
         except NoResultFound:
             return None
 
-    def get_user_from_session_id(self, session_id: str) -> Type[User]:
+    def get_user_from_session_id(self, session_id: str) -> str:
         """
         Gets a user using session id
         """
