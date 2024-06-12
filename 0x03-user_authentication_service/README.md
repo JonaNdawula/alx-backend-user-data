@@ -134,4 +134,3 @@ If the token is valid, respond with a 200 HTTP code and the following JSON paylo
 
 {"email": "<user email>", "message": "Password updated"}
 
-20. End-to-end integration test
