@@ -101,9 +101,9 @@ class Auth:
         """
         Generates reset password token
         """
-        user = User.query.filter_by(email=email).first()
-
-        if user is None:
+        try:
+            user = User.query.filter_by(email=email)
+        except NoResultFound:
             raise ValueError
 
         reset_token = str(uuid4())
