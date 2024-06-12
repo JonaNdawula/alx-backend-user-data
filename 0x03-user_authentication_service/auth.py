@@ -97,14 +97,14 @@ class Auth:
         except NoResultFound:
             return None
 
-    def get_reset_password_token(self, email):
+    def get_reset_password_token(self, email: str) -> str:
         """
         Generates reset password token
         """
         user = User.query.filter_by(email=email).first()
 
         if user is None:
-            raise ValueError('User does not exist')
+            raise ValueError
 
         reset_token = str(uuid4())
         user.reset_token = reset_token
