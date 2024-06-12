@@ -102,13 +102,11 @@ class Auth:
         Generates reset password token
         """
         try:
-            user = User.query.filter_by(email=email)
+            user = self._db.find_user_by(email=email)
         except NoResultFound:
             raise ValueError
 
         reset_token = str(uuid4())
-        user.reset_token = reset_token
-
-        db.session.commit()
+        self._db.update_user(user.id, reset_token=reset_token)
 
         return reset_token
